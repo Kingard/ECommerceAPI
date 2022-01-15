@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
@@ -20,6 +21,7 @@ class Book(models.Model):
     stock = models.IntegerField() # Quantity
     description = models.TextField()
     image_url = models.URLField()
+    created_by = models.ForeignKey('auth.User',related_name='books',on_delete=models.CASCADE)
     status = models.BooleanField(default=True) #is the book available, y/n
     date_created = models.DateField(auto_now_add=True)
 
@@ -37,6 +39,7 @@ class Product(models.Model):
     price = models.FloatField()
     stock = models.IntegerField()
     image_url = models.URLField()
+    created_by = models.ForeignKey('auth.User',related_name='products',on_delete=models.CASCADE)
     status = models.BooleanField(default=True)
     date_created = models.DateField(auto_now_add=True)
 
