@@ -4,6 +4,7 @@ from rest_framework import generics
 from .serializers import CategorySerializer,BookSerializer,ProductSerializer, UserSerializer
 from .models import Category, Book, Product
 from django.contrib.auth.models import User
+from rest_framework import permissions
 
 
 # Create your views here.
