@@ -15,8 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path,include
+from ecommerceapp.views import RegistrationAPIView
+from rest_framework_simplejwt.views import TokenObtainPairView,TokenRefreshView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/',include('ecommerceapp.urls')),
+    path('auth/register/',RegistrationAPIView.as_view(),name='register'),
+    path('auth/login/',TokenObtainPairView.as_view(),name='login'),
+    path('auth/refresh-token/',TokenRefreshView.as_view(),name='refresh token'),
 ]
